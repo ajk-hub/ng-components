@@ -1,0 +1,28 @@
+<ng-template #currencyDropdown>
+  <ng-select class="col-4"
+             bindLabel="label"
+             bindValue="value"
+             [formControl]="currencyFormControlState"
+             [selectOnTab]="true"
+             [clearable]="false">
+    <ng-option *ngFor="let item of currencies"
+               [value]="item">
+      {{ item}}
+    </ng-option>
+  </ng-select>
+</ng-template>
+
+<app-input-field
+  [id]="id"
+  [type]="'text'"
+  [label]="label"
+  [required]="required"
+  [formControlState]="formControlState"
+  (stateChanged)="emitChange($event)"
+  (focusout)="onFocusOutAmount()"
+  [leftTemplate]="currencyDropdown"
+  [inputParentClassStyle]="'row no-gutters dropdown-with-input'"
+>
+</app-input-field>
+
+<a *ngIf="!hasSameValues()" [title]="formatOldAmount()">OldValue</a>

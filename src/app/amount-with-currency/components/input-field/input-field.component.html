@@ -1,0 +1,43 @@
+<app-form-control
+  [type]="inputType"
+  [label]="label"
+  [placeholder]="placeholder"
+  [labelColumnClassStyle]="inputType === 'textarea' ? 'col-3' : 'col-6'"
+  [inputColumnClassStyle]="inputType === 'textarea' ? 'col-9' : 'col-6'"
+  [required]="required"
+  [showError]="showError"
+>
+
+  <div [class]="inputParentClassStyle">
+
+    <ng-container *ngIf="leftTemplate">
+      <ng-container *ngTemplateOutlet="leftTemplate"></ng-container>
+    </ng-container>
+
+    <input
+      *ngIf="inputType === 'text'"
+      class="form-control col-8"
+      [id]="id"
+      [type]="inputType"
+      (change)="stateChanged.emit(formControlState.value)"
+      [placeholder]="placeholder"
+    />
+
+    <textarea
+      *ngIf="inputType === 'textarea'"
+      class="form-control"
+      [id]="id"
+      [rows]="'rows'"
+    ></textarea>
+
+    <ng-container *ngIf="rightTemplate">
+      <ng-container *ngTemplateOutlet="rightTemplate"></ng-container>
+    </ng-container>
+
+    <div class="input-group-append" *ngIf="rightButtonLabel">
+      <span class="input-group-text">{{ rightButtonLabel }}</span>
+    </div>
+
+  </div>
+
+</app-form-control>

@@ -11,7 +11,7 @@ import {FormControlSharedComponent} from './amount-with-currency/components/shar
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgSelectModule} from '@ng-select/ng-select';
 import {ReactiveFormsModule} from '@angular/forms';
-import { PercentageFieldComponent } from './amount-with-currency/components/percentage-field/percentage-field.component';
+import {PercentageFieldComponent} from './amount-with-currency/components/percentage-field/percentage-field.component';
 import {CurrencyWithAmountComponent} from './amount-with-currency/components/currency-with-amount/currency-with-amount.component';
 
 @NgModule({

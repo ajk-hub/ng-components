@@ -19,6 +19,7 @@
       class="form-control col-8"
       [id]="id"
       [type]="inputType"
+      [formControl]="formControlState"
       (change)="stateChanged.emit(formControlState.value)"
       [placeholder]="placeholder"
     />

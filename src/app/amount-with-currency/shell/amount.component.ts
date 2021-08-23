@@ -35,6 +35,8 @@ import {FormControl} from '@angular/forms';
             [label]="'Amount'"
             [required]="true"
             [showError]="true"
+            [formControlState]="amountControl"
+            [currencyFormControlState]="currencyControl"
           >
           </app-amount-with-currency>
         </div>
@@ -74,5 +76,8 @@ export class AmountComponent {
   currencies = ['USD', 'JOD', 'KWD', 'NPR'];
 
   selectControl = new FormControl();
+
+  amountControl = new FormControl();
+  currencyControl = new FormControl('JOD');
 
 }

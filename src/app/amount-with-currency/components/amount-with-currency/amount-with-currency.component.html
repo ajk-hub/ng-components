@@ -4,7 +4,9 @@
              bindValue="value"
              [formControl]="currencyFormControlState"
              [selectOnTab]="true"
-             [clearable]="false">
+             [clearable]="false"
+             (change)="currencyChanged($event)"
+  >
     <ng-option *ngFor="let item of currencies"
                [value]="item">
       {{ item}}
@@ -17,12 +19,9 @@
   [type]="'text'"
   [label]="label"
   [required]="required"
-  [formControlState]="formControlState"
-  (stateChanged)="emitChange($event)"
-  (focusout)="onFocusOutAmount()"
+  [formControlState]="tempAmountFormControlState"
+  (stateChanged)="amountChanged($event)"
   [rightTemplate]="currencyDropdown"
   [inputParentClassStyle]="'row no-gutters input-with-dropdown'"
 >
 </app-input-field>
-
-<a *ngIf="!hasSameValues()" [title]="formatOldAmount()">OldValue</a>

@@ -20,6 +20,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "currency-codes"
+            ],
             "outputPath": "dist/ng-components",
             "index": "src/index.html",
             "main": "src/main.ts",

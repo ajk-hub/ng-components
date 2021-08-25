@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControlSharedComponent} from '../shared/component';
+import {FormControlStateComponent} from '../../../shared/form-control-state.component';
 import {ValidationErrors} from '@angular/forms';
 
 @Component({
@@ -7,7 +7,7 @@ import {ValidationErrors} from '@angular/forms';
   templateUrl: './form-control.component.html',
   styleUrls: ['./form-control.component.scss']
 })
-export class FormControlComponent extends FormControlSharedComponent {
+export class FormControlComponent extends FormControlStateComponent {
 
   shouldDisplayErrorMessage(): boolean {
     return true;

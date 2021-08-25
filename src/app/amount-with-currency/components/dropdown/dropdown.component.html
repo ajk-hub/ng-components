@@ -1,0 +1,43 @@
+<app-form-control
+  [type]="inputType"
+  [label]="label"
+  [placeholder]="placeholder"
+  [required]="required"
+  [showError]="showError"
+  [formControlState]="formControlState"
+>
+
+  <div class="dropdown">
+    <ng-select [id]="id"
+               [placeholder]="placeholder"
+               [selectOnTab]="true"
+               [clearable]="false"
+               [formControl]="formControlState"
+               (change)="stateChanged.emit($event)"
+               [class.is-valid]="isCurrentControlValid()"
+               [class.is-invalid]="isCurrentControlInvalid()"
+    >
+      <div class="ng-value">
+        <span class="ng-value-label">Items Selected: </span>
+      </div>
+
+      <ng-option *ngFor="let item of items"
+                 [value]="item">
+        {{ item }}
+      </ng-option>
+    </ng-select>
+
+    <ng-container *ngIf="showError && isCurrentControlInvalid()">
+
+      <div class="invalid-feedback" *ngIf="formControlState.errors?.required">
+        * Value must be provided.
+      </div>
+
+      <div class="invalid-feedback" *ngIf="formControlState.errors?.message">
+        * {{ formControlState.errors?.message }}
+      </div>
+
+    </ng-container>
+
+  </div>
+</app-form-control>

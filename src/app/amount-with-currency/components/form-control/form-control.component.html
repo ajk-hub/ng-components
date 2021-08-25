@@ -1,32 +1,20 @@
-<div class="row">
-
-  <div *ngIf="label" [class.col-6]="!labelColumnClassStyle" [ngClass]="labelColumnClassStyle">
-
-    <span>{{ label }}</span>
-    <span *ngIf="required">Required</span>
-
-  </div>
-
-  <div [class.col-6]="!inputColumnClassStyle" [ngClass]="inputColumnClassStyle">
-    <ng-content></ng-content>
-  </div>
-
+<div *ngIf="label">
+  <label [for]="id" class="form-label">{{ label }}</label>
+  <span *ngIf="required"> *</span>
 </div>
 
+<ng-content></ng-content>
+
 <div class="row">
-  <div [class.col-6]="!labelColumnClassStyle" [ngClass]="labelColumnClassStyle"></div>
 
-  <div [class.col-6]="!inputColumnClassStyle" [ngClass]="inputColumnClassStyle">
+  <ng-container *ngIf="showError && shouldDisplayErrorMessage()">
 
-    <ng-container *ngIf="showError && shouldDisplayErrorMessage()">
+    <div *ngIf="validationErrors() as errors">
+      <ng-container *ngFor="let error of errors">
+        <span>{{ error }}</span>
+      </ng-container>
+    </div>
 
-      <div *ngIf="validationErrors() as errors">
-        <ng-container *ngFor="let error of errors">
-          <span>error</span>
-        </ng-container>
-      </div>
+  </ng-container>
 
-    </ng-container>
-
-  </div>
 </div>

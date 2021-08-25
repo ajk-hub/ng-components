@@ -1,0 +1,89 @@
+<div class="container">
+
+  <form [formGroup]="formGroupState" (ngSubmit)="submit()">
+
+    <!--    <div class="input-group mt-3 mb-3">-->
+    <!--      <div class="input-group-prepend">-->
+    <!--        <span class="input-group-text" id="basic-addon1">@</span>-->
+    <!--      </div>-->
+
+    <!--      <input-->
+    <!--        type="text"-->
+    <!--        class="form-control"-->
+    <!--        placeholder="Username"-->
+    <!--        aria-label="Username"-->
+    <!--        aria-describedby="basic-addon1">-->
+    <!--    </div>-->
+
+    <!--    <div class="input-group mt-3 mb-3">-->
+    <!--      <input type="text" class="form-control"-->
+    <!--             placeholder="Recipient's username"-->
+    <!--             aria-label="Recipient's username with two button addons">-->
+    <!--      <div class="input-group-append">-->
+    <!--        <button class="btn btn-outline-secondary" type="button">Button</button>-->
+    <!--      </div>-->
+    <!--    </div>-->
+
+    <div class="row">
+      <div class="col-md-6 mt-3 mb-3">
+        <app-input-field
+          [id]="'percentage_text'"
+          [type]="'text'"
+          [label]="'Percentage'"
+          [required]="true"
+          [formControlState]="toControl('percentage')"
+          [rightButtonLabel]="'%'"
+          [inputContainerClassStyle]="'input-group'"
+        >
+        </app-input-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mt-3 mb-3">
+        <app-amount-with-currency
+          [id]="'amount_text'"
+          [type]="'text'"
+          [label]="'Amount'"
+          [required]="true"
+          [formGroupState]="formGroupState"
+          [formControlState]="toControl('amount')"
+          [currencyFormControlState]="toControl('currency')"
+        >
+        </app-amount-with-currency>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mt-3 mb-3">
+        <app-currency-with-amount
+          [id]="'currency_text'"
+          [type]="'text'"
+          [label]="'Currency'"
+          [required]="true"
+          [formControlState]="toControl('amount')"
+          [currencyFormControlState]="toControl('currency')"
+        >
+        </app-currency-with-amount>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mt-3 mb-3">
+        <app-dropdown
+          [id]="'currency'"
+          [placeholder]="'Select currency...'"
+          [formControlState]="toControl('currency')"
+          [items]="currencies"
+        ></app-dropdown>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mt-3 mb-3">
+        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+      </div>
+    </div>
+
+  </form>
+</div>

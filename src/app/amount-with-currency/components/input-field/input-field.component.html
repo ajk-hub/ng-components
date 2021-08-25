@@ -2,13 +2,12 @@
   [type]="inputType"
   [label]="label"
   [placeholder]="placeholder"
-  [labelColumnClassStyle]="inputType === 'textarea' ? 'col-3' : 'col-6'"
-  [inputColumnClassStyle]="inputType === 'textarea' ? 'col-9' : 'col-6'"
   [required]="required"
   [showError]="showError"
+  [formControlState]="formControlState"
 >
 
-  <div [class]="inputParentClassStyle">
+  <div [class]="inputContainerClassStyle">
 
     <ng-container *ngIf="leftTemplate">
       <ng-container *ngTemplateOutlet="leftTemplate"></ng-container>
@@ -16,12 +15,15 @@
 
     <input
       *ngIf="inputType === 'text'"
-      class="form-control col-8"
+      class="form-control"
       [id]="id"
       [type]="inputType"
-      [formControl]="formControlState"
+      [class]="inputFieldClassStyle"
       (change)="stateChanged.emit(formControlState.value)"
       [placeholder]="placeholder"
+      [formControl]="formControlState"
+      [class.is-valid]="isCurrentControlValid()"
+      [class.is-invalid]="isCurrentControlInvalid()"
     />
 
     <textarea
@@ -38,6 +40,16 @@
     <div class="input-group-append" *ngIf="rightButtonLabel">
       <span class="input-group-text">{{ rightButtonLabel }}</span>
     </div>
+
+    <ng-container *ngIf="showError && isCurrentControlInvalid()">
+      <div [class]="'invalid-feedback'" *ngIf="formControlState.errors?.required">
+        * Value must be provided.
+      </div>
+
+      <div [class]="'invalid-feedback'" *ngIf="formControlState.errors?.message">
+        * {{ formControlState.errors?.message }}
+      </div>
+    </ng-container>
 
   </div>
 

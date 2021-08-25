@@ -1,0 +1,30 @@
+<div class="container">
+  <form [formGroup]="formGroupState" (ngSubmit)="submit()">
+    <div class="row">
+
+      <div class="col-6">
+        <div class="row">
+
+          <div class="col-12">
+            <app-amount-with-currency
+              [id]="'amount_text'"
+              [type]="'text'"
+              [label]="'Amount'"
+              [required]="true"
+              [formGroupState]="formGroupState"
+              [formControlState]="toControl('amount')"
+              [currencyFormControlState]="toControl('currency')"
+            >
+            </app-amount-with-currency>
+          </div>
+
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </form>
+</div>

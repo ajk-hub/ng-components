@@ -1,17 +1,14 @@
 <ng-template #currencyDropdown>
-  <ng-select class="col-4"
-             bindLabel="label"
-             bindValue="value"
-             [formControl]="currencyFormControlState"
-             [selectOnTab]="true"
-             [clearable]="false"
-             (change)="currencyChanged($event)"
-  >
-    <ng-option *ngFor="let item of currencies"
-               [value]="item">
-      {{ item}}
-    </ng-option>
-  </ng-select>
+
+  <app-dropdown
+    class="col-4"
+    [id]="'currency'"
+    [placeholder]="'Select currency...'"
+    [formControlState]="currencyFormControlState"
+    [items]="currencies"
+    (stateChanged)="currencyChanged($event)"
+  ></app-dropdown>
+
 </ng-template>
 
 <app-input-field
@@ -20,8 +17,9 @@
   [label]="label"
   [required]="required"
   [formControlState]="tempAmountFormControlState"
-  (stateChanged)="amountChanged($event)"
+  (stateChanged)="onAmountChanged($event)"
   [rightTemplate]="currencyDropdown"
-  [inputParentClassStyle]="'row no-gutters input-with-dropdown'"
+  [inputContainerClassStyle]="'row no-gutters input-with-dropdown'"
+  [inputFieldClassStyle]="'col-8'"
 >
 </app-input-field>

@@ -1,35 +1,26 @@
 import * as currCode from 'currency-codes';
+import {Utility} from './utility';
 
 export class AmountCurrencyHandler {
 
-  constructor(private amount: string,
-              private currency: string) {
-  }
+  public static formatAmount(amount: any, currency: string): string {
 
-  public static of(amount: string, currency: string): AmountCurrencyHandler {
-    const initialAmount = amount && amount !== '' ? amount : '0.0';
-    return new AmountCurrencyHandler(
-      AmountCurrencyHandler.removeComma(initialAmount),
-      currency
-    );
+    if (Utility.isValid(amount) && Utility.isValid(currency) && Number(this.removeComma(amount)) >= 0) {
+
+      amount = this.removeComma(amount);
+      const digits = currCode.code(currency)?.digits;
+      return digits ? `${this.addCommaInAmount(this.addOrRemoveDigits(amount, digits))}` : '';
+    }
+
+    return amount;
   }
 
   public static removeComma(amount: string): string {
-    return amount.split(',').join('');
+    return Utility.isValid(amount) ? amount.split(',').join('') : amount;
   }
 
-  public formatAmountWithCommaAndDecimal(): string {
-    if (this.currency && Number(this.amount) >= 0) {
-
-      const digits = currCode.code(this.currency)?.digits;
-      return digits ? `${this.addCommaInAmount(this.addOrRemoveDigits(digits))}` : '';
-    }
-
-    return this.amount;
-  }
-
-  private addOrRemoveDigits(digits: number): string {
-    const decimalSplit = this.amount.toString().split('.');
+  private static addOrRemoveDigits(amount: string, digits: number): string {
+    const decimalSplit = amount.split('.');
 
     if (decimalSplit[1] && decimalSplit[1].length > digits) {
 
@@ -38,10 +29,10 @@ export class AmountCurrencyHandler {
 
     }
 
-    return Number(this.amount).toFixed(digits);
+    return Number(amount).toFixed(digits);
   }
 
-  private addCommaInAmount(amount: string): string {
+  private static addCommaInAmount(amount: string): string {
     if (amount) {
       const splitByDecimal = amount.split('.');
 

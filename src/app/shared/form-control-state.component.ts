@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControlActionComponent} from './form-control-action.component';
 
 export enum InputType {
   text = 'text',
@@ -7,7 +7,7 @@ export enum InputType {
 }
 
 @Component({template: ''})
-export class FormControlSharedComponent {
+export class FormControlStateComponent extends FormControlActionComponent {
   inputType = '';
 
   @Input() id = '';
@@ -15,11 +15,6 @@ export class FormControlSharedComponent {
   @Input() required = false;
   @Input() placeholder = '';
   @Input() showError = true;
-
-  @Input() labelColumnClassStyle = '';
-  @Input() inputColumnClassStyle = '';
-
-  @Input() formControlState = new FormControl();
 
   @Output() stateChanged: EventEmitter<any> = new EventEmitter();
 

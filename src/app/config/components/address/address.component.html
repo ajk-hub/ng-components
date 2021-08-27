@@ -1,0 +1,51 @@
+<ng-container *ngIf="addressConfig">
+
+  <div class="mb-3">
+    <div class="mb-2 fs-16"><b>Address</b></div>
+
+    <app-group-container>
+
+      <div class="row">
+
+        <div class="col-4 mb-2">
+          <app-input-control [id]="'address1'"
+                             [label]="fieldLabel(addressConfig, 'address1')"
+                             [formGroupState]="addressFormGroupState"
+          ></app-input-control>
+        </div>
+
+        <div class="col-4 mb-2">
+          <app-input-control [id]="'address2'"
+                             [label]="fieldLabel(addressConfig, 'address2')"
+                             [formGroupState]="addressFormGroupState"
+          ></app-input-control>
+        </div>
+
+        <div class="col-4 mb-2">
+          <app-input-control [id]="'street'"
+                             [label]="fieldLabel(addressConfig, 'street')"
+                             [formGroupState]="addressFormGroupState"
+          ></app-input-control>
+        </div>
+
+        <div class="col-4 mb-2">
+          <app-input-control [id]="'city'"
+                             [label]="fieldLabel(addressConfig, 'city')"
+                             [formGroupState]="addressFormGroupState"
+          ></app-input-control>
+        </div>
+
+        <div class="col-4 mb-2">
+          <app-input-control [id]="'country'"
+                             [label]="fieldLabel(addressConfig, 'country')"
+                             [formGroupState]="addressFormGroupState"
+          ></app-input-control>
+        </div>
+
+      </div>
+
+    </app-group-container>
+
+  </div>
+
+</ng-container>

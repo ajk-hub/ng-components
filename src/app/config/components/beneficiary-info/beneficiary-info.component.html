@@ -1,0 +1,26 @@
+<ng-container *ngIf="beneficiaryInfoConfig">
+
+  <div class="mb-3">
+    <div class="mb-2 fs-16"><b>{{ beneficiaryInfoConfig.label }}</b></div>
+
+    <app-group-container>
+
+      <div class="mb-3">
+        <app-input-control [id]="'name'"
+                           [label]="fieldLabel(beneficiaryInfoConfig, 'name')"
+                           [formGroupState]="formGroupState"
+        ></app-input-control>
+      </div>
+
+      <div class="mb-3">
+        <app-input-control [id]="'nationality'"
+                           [label]="fieldLabel(beneficiaryInfoConfig, 'nationality')"
+                           [formGroupState]="formGroupState"
+        ></app-input-control>
+      </div>
+
+    </app-group-container>
+
+  </div>
+
+</ng-container>

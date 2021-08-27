@@ -16,6 +16,17 @@ import {ReactiveFormValidationComponent} from './reactive-form-validation/reacti
 import {AmountSampleComponent} from './amount-with-currency/amount-sample/amount-sample.component';
 import {FormControlActionComponent} from './shared/form-control-action.component';
 import {DropdownComponent} from './amount-with-currency/components/dropdown/dropdown.component';
+import {ConfigShellComponent} from './config/shell/config-shell.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ModalModule} from 'ngx-bootstrap/modal';
+import {BeneficiaryBankListComponent} from './config/components/beneficiary-bank/beneficiary-bank-list/beneficiary-bank-list.component';
+import {BeneficiaryBankAddComponent} from './config/components/beneficiary-bank/beneficiary-bank-add/beneficiary-bank-add.component';
+import {AddressComponent} from './config/components/address/address.component';
+import {BeneficiaryInfoComponent} from './config/components/beneficiary-info/beneficiary-info.component';
+import {FormStateComponent} from './config/shared/form-state.component';
+import {FormActionComponent} from './config/shared/form-action.component';
+import {InputControlComponent} from './config/shared/input-control.component';
+import {GroupContainerComponent} from './config/shared/group-container.component';
 
 @NgModule({
   declarations: [
@@ -29,14 +40,25 @@ import {DropdownComponent} from './amount-with-currency/components/dropdown/drop
     ReactiveFormValidationComponent,
     AmountSampleComponent,
     FormControlActionComponent,
-    DropdownComponent
+    DropdownComponent,
+    ConfigShellComponent,
+    BeneficiaryBankListComponent,
+    BeneficiaryBankAddComponent,
+    AddressComponent,
+    BeneficiaryInfoComponent,
+    FormStateComponent,
+    FormActionComponent,
+    InputControlComponent,
+    GroupContainerComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     AppRoutingModule,
     NgbModule,
-    NgSelectModule
+    NgSelectModule,
+    BrowserAnimationsModule,
+    ModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

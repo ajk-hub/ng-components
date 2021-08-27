@@ -11,9 +11,7 @@ export class FormControlValidator {
 
           FormControlValidator.activateValidators(group.controls[key] as FormGroup);
         }
-        group.get(key)?.markAsTouched({onlySelf: true});
-        group.get(key)?.markAsDirty({onlySelf: true});
-        group.markAsTouched({onlySelf: true});
+        group.markAllAsTouched();
         group.updateValueAndValidity();
       });
   }

@@ -1,5 +1,5 @@
 import {AbstractControl, FormArray, FormControl, FormGroup, ValidationErrors, ValidatorFn} from '@angular/forms';
-import {Utility} from '../amount-with-currency/components/shared/utility';
+import {Utility} from './utility';
 
 export class FormControlValidator {
 

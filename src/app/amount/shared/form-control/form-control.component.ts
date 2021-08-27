@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControlStateComponent} from '../../../shared/form-control-state.component';
+import {FormControlStateComponent} from '../form-control-state.component';
 import {ValidationErrors} from '@angular/forms';
 
 @Component({

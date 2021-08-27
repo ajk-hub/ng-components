@@ -1,5 +1,5 @@
 import * as currCode from 'currency-codes';
-import {Utility} from './utility';
+import {Utility} from '../../../utility/utility';
 
 export class AmountCurrencyHandler {
 

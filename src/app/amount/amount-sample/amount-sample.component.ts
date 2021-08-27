@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {FormControlStateComponent} from '../../shared/form-control-state.component';
-import {FormControlValidator} from '../../shared/form-control-validator';
+import {FormControlStateComponent} from '../shared/form-control-state.component';
+import {FormControlValidator} from '../../utility/form-control-validator';
 
 @Component({
   selector: 'app-amount-sample',

@@ -1,5 +1,5 @@
 import {Component, Input, TemplateRef} from '@angular/core';
-import {FormControlStateComponent} from '../../../shared/form-control-state.component';
+import {FormControlStateComponent} from '../form-control-state.component';
 
 @Component({
   selector: 'app-input-field',

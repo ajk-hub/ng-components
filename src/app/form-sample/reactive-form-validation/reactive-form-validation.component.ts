@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {FormControlValidator} from '../shared/form-control-validator';
+import {FormControlValidator} from '../../utility/form-control-validator';
 
 @Component({
   selector: 'app-reactive-form-validation',

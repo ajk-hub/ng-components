@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {FormControlStateComponent} from '../../../shared/form-control-state.component';
+import {FormControlStateComponent} from '../../shared/form-control-state.component';
 import {FormControl} from '@angular/forms';
 
 @Component({

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import {FormControlActionComponent} from '../../shared/form-control-action.component';
-import {FormControlValidator} from '../../shared/form-control-validator';
+import {FormControlActionComponent} from '../shared/form-control-action.component';
+import {FormControlValidator} from '../../utility/form-control-validator';
 
 @Component({
   selector: 'app-amount',

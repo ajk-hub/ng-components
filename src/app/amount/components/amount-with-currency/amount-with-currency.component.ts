@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
-import {FormControlStateComponent} from '../../../shared/form-control-state.component';
+import {FormControlStateComponent} from '../../shared/form-control-state.component';
 import {FormControl} from '@angular/forms';
-import {AmountCurrencyHandler} from '../shared/amount-currency-handler';
+import {AmountCurrencyHandler} from '../utility/amount-currency-handler';
 
 @Component({
   selector: 'app-amount-with-currency',

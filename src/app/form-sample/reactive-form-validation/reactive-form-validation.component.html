@@ -26,7 +26,6 @@
       </div>
     </div>
 
-    <!--      <label for="currency" class="form-label">Currency</label>-->
 
     <div class="col-4 mt-3 mb-3">
 
@@ -38,24 +37,28 @@
         [items]="currencies"
       ></app-dropdown>
 
-      <!--        <ng-select id="currency"-->
-      <!--                   bindLabel="label"-->
-      <!--                   bindValue="value"-->
-      <!--                   [formControl]="toControl('currency')"-->
-      <!--                   [selectOnTab]="true"-->
-      <!--                   [clearable]="false"-->
-      <!--                   [class.is-valid]="isValid('currency')"-->
-      <!--                   [class.is-invalid]="isInvalid('currency')"-->
-      <!--        >-->
-      <!--          <ng-option *ngFor="let item of currencies"-->
-      <!--                     [value]="item">-->
-      <!--            {{ item}}-->
-      <!--          </ng-option>-->
-      <!--        </ng-select>-->
+    </div>
 
-      <!--        <div class="invalid-feedback" *ngIf="toControl('currency').errors?.required">-->
-      <!--          * Value must be provided.-->
-      <!--        </div>-->
+    <div class="col-4 mt-3 mb-3">
+      <label for="currency" class="form-label">Currency</label>
+      <ng-select id="currency"
+                 bindLabel="label"
+                 bindValue="value"
+                 [formControl]="toControl('currency')"
+                 [selectOnTab]="true"
+                 [clearable]="false"
+                 [class.is-valid]="isValid('currency')"
+                 [class.is-invalid]="isInvalid('currency')"
+      >
+        <ng-option *ngFor="let item of currencies"
+                   [value]="item">
+          {{ item}}
+        </ng-option>
+      </ng-select>
+
+      <div class="invalid-feedback" *ngIf="toControl('currency').errors?.required">
+        * Value must be provided.
+      </div>
 
     </div>
 

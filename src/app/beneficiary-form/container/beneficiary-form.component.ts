@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {FormStateComponent} from '../shared/form-state.component';
 import {BeneficiaryConfig, BeneficiaryConfigHelper, ControlType} from '../beneficiary-config';
-import {FormControlValidator} from '../../shared/form-control-validator';
+import {FormControlValidator} from '../../utility/form-control-validator';
 
 @Component({
   selector: 'app-config-shell',
-  templateUrl: './config-shell.component.html',
-  styleUrls: ['./config-shell.component.scss']
+  templateUrl: './beneficiary-form.component.html',
+  styleUrls: ['./beneficiary-form.component.scss']
 })
-export class ConfigShellComponent extends FormStateComponent implements OnInit {
+export class BeneficiaryFormComponent extends FormStateComponent implements OnInit {
 
   componentConfig = BeneficiaryConfig.coreConfig;
 

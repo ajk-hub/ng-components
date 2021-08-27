@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {FormControlValidator} from '../../utility/form-control-validator';
+import {FormValidator} from '../../utility/form-validator';
 
 @Component({
   selector: 'app-reactive-form-validation',
@@ -12,12 +12,12 @@ export class ReactiveFormValidationComponent {
   currencies = ['USD', 'JOD', 'KWD', 'NPR'];
 
   amountGroup = new FormGroup({
-    amount: new FormControl(null, [Validators.required, FormControlValidator.greaterThanZero]),
+    amount: new FormControl(null, [Validators.required, FormValidator.greaterThanZero]),
     currency: new FormControl(null, Validators.required)
   });
 
   submit(): void {
-    FormControlValidator.activateValidators(this.amountGroup);
+    FormValidator.activateValidators(this.amountGroup);
 
     console.log('this.amountGroup.value', this.amountGroup.value);
     console.log('this.amountGroup', this.amountGroup);

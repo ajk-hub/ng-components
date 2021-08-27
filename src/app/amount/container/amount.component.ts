@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {FormControlActionComponent} from '../shared/form-control-action.component';
-import {FormControlValidator} from '../../utility/form-control-validator';
+import {FormValidator} from '../../utility/form-validator';
 
 @Component({
   selector: 'app-amount',
@@ -10,7 +10,7 @@ import {FormControlValidator} from '../../utility/form-control-validator';
 })
 export class AmountComponent extends FormControlActionComponent implements OnInit {
 
-  amountControl = new FormControl(null, [Validators.required, FormControlValidator.greaterThanZero]);
+  amountControl = new FormControl(null, [Validators.required, FormValidator.greaterThanZero]);
   currencyControl = new FormControl(null, [Validators.required]);
 
   ngOnInit(): void {
@@ -19,7 +19,7 @@ export class AmountComponent extends FormControlActionComponent implements OnIni
   }
 
   submit(): void {
-    FormControlValidator.activateValidators(this.formGroupState);
+    FormValidator.activateValidators(this.formGroupState);
 
     console.log('this.formGroupState', this.formGroupState);
   }

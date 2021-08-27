@@ -1,7 +1,7 @@
 import {AbstractControl, FormArray, FormControl, FormGroup, ValidationErrors, ValidatorFn} from '@angular/forms';
-import {Utility} from './utility';
+import {Optional} from './optional';
 
-export class FormControlValidator {
+export class FormValidator {
 
   static activateValidators(group: FormGroup): void {
     Object.keys(group.controls)
@@ -9,7 +9,7 @@ export class FormControlValidator {
         if (group.controls[key] instanceof FormGroup
           || group.controls[key] instanceof FormArray) {
 
-          FormControlValidator.activateValidators(group.controls[key] as FormGroup);
+          FormValidator.activateValidators(group.controls[key] as FormGroup);
         }
         group.markAllAsTouched();
         group.updateValueAndValidity();
@@ -23,7 +23,7 @@ export class FormControlValidator {
   }
 
   static greaterThanZero(control: AbstractControl): ValidationErrors | null {
-    if (Utility.isValid(control.value)) {
+    if (Optional.isValid(control.value)) {
       const amount: number = +control.value;
       return amount <= 0
         ? {message: 'Amount should be greater than zero.'}

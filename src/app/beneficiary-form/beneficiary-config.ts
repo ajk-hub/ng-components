@@ -83,8 +83,8 @@ export class BeneficiaryConfig {
     type: ControlType.ARRAY,
     fields: [
       {
-        name: 'correspondentBank',
-        label: 'Correspondent Bank',
+        name: 'bankName',
+        label: 'Bank Name',
         required: true
       },
       {

@@ -3,6 +3,7 @@ import {ComponentType, GroupConfig} from '../../beneficiary-config';
 import {FormActionComponent} from '../../shared/form-action.component';
 import {FormStateComponent} from '../../shared/form-state.component';
 import {FormGroup} from '@angular/forms';
+import {Optional} from '../../../utility/optional';
 
 @Component({
   selector: 'app-address',
@@ -16,10 +17,11 @@ export class AddressComponent extends FormStateComponent implements OnInit {
 
   ngOnInit(): void {
     this.addressConfig = this.componentConfig.get(ComponentType.address);
-    if (this.addressConfig) {
-      this.formGroupState.addControl(this.addressConfig.name, this.addressFormGroupState);
-      FormActionComponent.initControl(this.addressConfig, this.addressFormGroupState);
-    }
+    Optional.of(this.addressConfig)
+      .ifExist(ac => {
+        this.formGroupState.addControl(ac.name, this.addressFormGroupState);
+        FormActionComponent.initControl(ac, this.addressFormGroupState);
+      });
   }
 
 }

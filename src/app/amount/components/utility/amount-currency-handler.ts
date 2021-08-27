@@ -1,11 +1,11 @@
 import * as currCode from 'currency-codes';
-import {Utility} from '../../../utility/utility';
+import {Optional} from '../../../utility/optional';
 
 export class AmountCurrencyHandler {
 
   public static formatAmount(amount: any, currency: string): string {
 
-    if (Utility.isValid(amount) && Utility.isValid(currency) && Number(this.removeComma(amount)) >= 0) {
+    if (Optional.isValid(amount) && Optional.isValid(currency) && Number(this.removeComma(amount)) >= 0) {
 
       amount = this.removeComma(amount);
       const digits = currCode.code(currency)?.digits;
@@ -16,7 +16,7 @@ export class AmountCurrencyHandler {
   }
 
   public static removeComma(amount: string): string {
-    return Utility.isValid(amount) ? amount.split(',').join('') : amount;
+    return Optional.isValid(amount) ? amount.split(',').join('') : amount;
   }
 
   private static addOrRemoveDigits(amount: string, digits: number): string {

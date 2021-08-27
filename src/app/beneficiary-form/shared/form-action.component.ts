@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {FormControl, FormGroup, ValidatorFn, Validators} from '@angular/forms';
 import {FieldConfig, GroupConfig} from '../beneficiary-config';
+import {Optional} from '../../utility/optional';
 
 @Component({template: ''})
 export class FormActionComponent {
@@ -17,11 +18,7 @@ export class FormActionComponent {
 
   private static getValidators(field: FieldConfig): ValidatorFn[] {
     const validators = field.required ? [Validators.required] : [];
-
-    if (field.validators) {
-      validators.push(...field.validators);
-    }
-
+    Optional.of(field.validators).ifExist(v => validators.push(...v));
     return validators;
   }
 

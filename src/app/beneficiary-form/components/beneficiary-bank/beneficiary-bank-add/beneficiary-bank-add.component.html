@@ -1,1 +1,40 @@
-<p>beneficiary-bank-add works!</p>
+<ng-container *ngIf="beneficiaryBankConfig && formGroupState">
+
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Add Beneficiary</h4>
+
+    <button type="button" class="close pull-right" aria-label="Close" (click)="closeOrCancel.emit()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+
+    <div class="mb-3">
+      <app-input-control [id]="'bankName'"
+                         [label]="fieldLabel(beneficiaryBankConfig, 'bankName')"
+                         [formGroupState]="formGroupState"
+      ></app-input-control>
+    </div>
+
+    <div class="mb-3">
+      <app-input-control [id]="'swiftCode'"
+                         [label]="fieldLabel(beneficiaryBankConfig, 'swiftCode')"
+                         [formGroupState]="formGroupState"
+      ></app-input-control>
+    </div>
+
+    <div class="mb-3">
+      <app-input-control [id]="'accountNumber'"
+                         [label]="fieldLabel(beneficiaryBankConfig, 'accountNumber')"
+                         [formGroupState]="formGroupState"
+      ></app-input-control>
+    </div>
+
+    <div class="mb-3">
+      <button class="btn btn-primary mr-3" (click)="onSubmit()">Submit</button>
+      <button class="btn btn-outline-primary" (click)="closeOrCancel.emit()">Cancel</button>
+    </div>
+  </div>
+
+</ng-container>

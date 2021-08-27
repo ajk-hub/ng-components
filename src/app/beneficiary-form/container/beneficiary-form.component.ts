@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormStateComponent} from '../shared/form-state.component';
 import {BeneficiaryConfig, BeneficiaryConfigHelper, ControlType} from '../beneficiary-config';
-import {FormControlValidator} from '../../utility/form-control-validator';
+import {FormValidator} from '../../utility/form-validator';
 
 @Component({
   selector: 'app-config-shell',
@@ -62,7 +62,7 @@ export class BeneficiaryFormComponent extends FormStateComponent implements OnIn
   }
 
   submitForm(): void {
-    FormControlValidator.activateValidators(this.formGroupState);
+    FormValidator.activateValidators(this.formGroupState);
     console.log('this.formGroupState', this.formGroupState);
     console.log('this.formGroupState.value', this.formGroupState.value);
   }

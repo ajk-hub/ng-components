@@ -58,7 +58,7 @@ export class FormValidator {
         const messages = [];
         const value = control.value.toString().trim();
 
-        if (value.length !== control.value.toString()) {
+        if (value.length !== control.value.toString().length) {
           messages.push('Value must not contain any spaces.');
         }
 
@@ -66,7 +66,7 @@ export class FormValidator {
           messages.push(`Value must be between ${minLength} and ${maxLength}.`);
         }
 
-        return {messages};
+        return messages.length > 0 ? {messages} : null;
       }
 
       return null;

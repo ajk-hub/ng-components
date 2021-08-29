@@ -26,7 +26,7 @@ export class BeneficiaryFormComponent extends FormStateComponent implements OnIn
     super();
   }
 
-// Field Type
+  // Field Type
   // form control
   // form group
   // form array

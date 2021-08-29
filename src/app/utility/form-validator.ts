@@ -52,4 +52,26 @@ export class FormValidator {
     };
   }
 
+  static lengthValidator(minLength = 1, maxLength = 15): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      if (control.value) {
+        const messages = [];
+        const value = control.value.toString().trim();
+
+        if (value.length !== control.value.toString()) {
+          messages.push('Value must not contain any spaces.');
+        }
+
+        if (value.length < minLength || value.length > maxLength) {
+          messages.push(`Value must be between ${minLength} and ${maxLength}.`);
+        }
+
+        return {messages};
+      }
+
+      return null;
+
+    };
+  }
+
 }

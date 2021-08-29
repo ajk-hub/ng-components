@@ -1,4 +1,5 @@
 import {ValidatorFn} from '@angular/forms';
+import {FormValidator} from '../utility/form-validator';
 
 export enum ControlType {
   CONTROL = 'control', GROUP = 'group', ARRAY = 'array',
@@ -36,7 +37,8 @@ export class BeneficiaryConfig {
       {
         name: 'name',
         label: 'Name',
-        required: true
+        required: true,
+        validators: [FormValidator.lengthValidator()]
       },
       {
         name: 'nationality',

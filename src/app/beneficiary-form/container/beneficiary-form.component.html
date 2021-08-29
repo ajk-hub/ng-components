@@ -13,28 +13,37 @@
     <div class="form-label fs-25">Beneficiary Form</div>
     <hr/>
 
-    <form [formGroup]="formGroupState" (ngSubmit)="submitForm()">
+    <ngx-bootstrap-spinner></ngx-bootstrap-spinner>
 
-      <app-beneficiary-info
-        [componentConfig]="componentConfig"
-        [formGroupState]="formGroupState"
-      ></app-beneficiary-info>
+    <ng-container *ngIf="(beneficiaryResource$ && beneficiaryResource$ | async) as beneficiaryResource">
 
-      <app-address
-        [componentConfig]="componentConfig"
-        [formGroupState]="formGroupState"
-      ></app-address>
+      <form [formGroup]="formGroupState" (ngSubmit)="submitForm()">
 
-      <app-beneficiary-bank-list
-        [componentConfig]="componentConfig"
-        [formGroupState]="formGroupState"
-      ></app-beneficiary-bank-list>
+        <app-beneficiary-info
+          [resource]="beneficiaryResource"
+          [componentConfig]="componentConfig"
+          [formGroupState]="formGroupState"
+        ></app-beneficiary-info>
 
-      <div class="mb-3">
-        <button class="btn btn-primary" type="submit">Submit</button>
-      </div>
+        <app-address
+          [addressResource]="beneficiaryResource.address"
+          [componentConfig]="componentConfig"
+          [formGroupState]="formGroupState"
+        ></app-address>
 
-    </form>
+        <app-beneficiary-bank-list
+          [beneficiaryBankResource]="beneficiaryResource.beneficiaryBank"
+          [componentConfig]="componentConfig"
+          [formGroupState]="formGroupState"
+        ></app-beneficiary-bank-list>
+
+        <div class="mb-3">
+          <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+
+      </form>
+
+    </ng-container>
 
   </div>
 

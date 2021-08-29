@@ -1,10 +1,11 @@
-import {Component, OnInit, TemplateRef} from '@angular/core';
+import {Component, Input, OnInit, TemplateRef} from '@angular/core';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 import {ComponentType, GroupConfig} from '../../../beneficiary-config';
 import {FormStateComponent} from '../../../shared/form-state.component';
 import {FormArray, FormGroup} from '@angular/forms';
 import {Optional} from '../../../../utility/optional';
 import {FormActionComponent} from '../../../shared/form-action.component';
+import {BeneficiaryBankResource} from '../../../service/beneficiary-resource';
 
 @Component({
   selector: 'app-beneficiary-bank-list',
@@ -12,6 +13,8 @@ import {FormActionComponent} from '../../../shared/form-action.component';
   styleUrls: ['./beneficiary-bank-list.component.scss']
 })
 export class BeneficiaryBankListComponent extends FormStateComponent implements OnInit {
+
+  @Input() beneficiaryBankResource: BeneficiaryBankResource[] | undefined;
 
   selectedBeneficiaryBank = -1;
   modalRef?: BsModalRef;
@@ -27,6 +30,14 @@ export class BeneficiaryBankListComponent extends FormStateComponent implements 
     this.beneficiaryBankConfig = this.componentConfig.get(ComponentType.beneficiaryBank);
     Optional.of(this.beneficiaryBankConfig)
       .ifExist(gc => this.formGroupState.addControl(gc.name, this.beneficiaryBankFormArrayState));
+
+    Optional.ifTrue(this.beneficiaryBankResource)
+      .then(bbr => {
+        for (const beneficiaryBank of bbr) {
+          const formGroupState = this.createFormGroupAndPatchValue(beneficiaryBank);
+          this.beneficiaryBankFormArrayState.push(formGroupState);
+        }
+      });
   }
 
   onAdd(template: TemplateRef<any>): void {
@@ -38,10 +49,7 @@ export class BeneficiaryBankListComponent extends FormStateComponent implements 
   onEdit(index: number, template: TemplateRef<any>): void {
     this.selectedBeneficiaryBank = index;
     const formGroup = this.beneficiaryBankFormArrayState.controls[index] as FormGroup;
-
-    this.beneficiaryBankFormGroupState = new FormGroup({});
-    FormActionComponent.initControl(this.beneficiaryBankConfig, this.beneficiaryBankFormGroupState);
-    this.beneficiaryBankFormGroupState.patchValue(formGroup.value);
+    this.beneficiaryBankFormGroupState = this.createFormGroupAndPatchValue(formGroup.value);
 
     this.openModal(template);
   }
@@ -65,6 +73,13 @@ export class BeneficiaryBankListComponent extends FormStateComponent implements 
 
   private openModal(template: TemplateRef<any>): void {
     this.modalRef = this.modalService.show(template, {ignoreBackdropClick: true});
+  }
+
+  private createFormGroupAndPatchValue(value: any): FormGroup {
+    const formGroupState = new FormGroup({});
+    FormActionComponent.initControl(this.beneficiaryBankConfig, formGroupState);
+    formGroupState.patchValue(value);
+    return formGroupState;
   }
 
 }

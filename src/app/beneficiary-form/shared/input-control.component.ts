@@ -21,6 +21,12 @@ import {FormStateComponent} from './form-state.component';
       <div [class]="'invalid-feedback'" *ngIf="toGroupControl(formGroupState, id).errors?.message">
         * {{ toGroupControl(formGroupState, id).errors?.message }}
       </div>
+
+      <div [class]="'invalid-feedback'" *ngIf="toGroupControl(formGroupState, id).errors?.messages">
+        <ng-container *ngFor="let message of toGroupControl(formGroupState, id).errors?.messages">
+          <div>* {{ message }}</div>
+        </ng-container>
+      </div>
     </ng-container>
   `
 })

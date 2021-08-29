@@ -8,6 +8,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {SharedModule} from '../shared.module';
 import {BeneficiaryFormSharedModule} from './shared/beneficiary-form-shared.module';
 import {ModalModule} from 'ngx-bootstrap/modal';
+import {NgxSpinnerModule} from 'ngx-bootstrap-spinner';
 
 const routes: Routes = [
   {path: '', component: BeneficiaryFormComponent}
@@ -25,7 +26,8 @@ const routes: Routes = [
     SharedModule,
     RouterModule.forChild(routes),
     BeneficiaryFormSharedModule,
-    ModalModule.forChild()
+    ModalModule.forChild(),
+    NgxSpinnerModule
   ],
   exports: []
 })

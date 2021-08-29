@@ -1,7 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormStateComponent} from '../../shared/form-state.component';
 import {ComponentType, GroupConfig} from '../../beneficiary-config';
 import {FormActionComponent} from '../../shared/form-action.component';
+import {BeneficiaryResource} from '../../service/beneficiary-resource';
+import {Optional} from '../../../utility/optional';
 
 @Component({
   selector: 'app-beneficiary-info',
@@ -10,11 +12,19 @@ import {FormActionComponent} from '../../shared/form-action.component';
 })
 export class BeneficiaryInfoComponent extends FormStateComponent implements OnInit {
 
+  @Input() resource: BeneficiaryResource | undefined;
+
   beneficiaryInfoConfig: GroupConfig | undefined;
 
   ngOnInit(): void {
     this.beneficiaryInfoConfig = this.componentConfig.get(ComponentType.beneficiaryInfo);
     FormActionComponent.initControl(this.beneficiaryInfoConfig, this.formGroupState);
+
+    Optional.of(this.resource)
+      .ifExist(r => {
+        this.toControl('name').setValue(r.name);
+        this.toControl('nationality').setValue(r.nationality);
+      });
   }
 
 }

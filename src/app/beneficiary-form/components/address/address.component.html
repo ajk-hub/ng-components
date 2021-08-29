@@ -7,35 +7,35 @@
 
       <div class="row">
 
-        <div class="col-4 mb-2">
+        <div *ngIf="fieldLabel(addressConfig, 'address1')" class="col-4 mb-2">
           <app-input-control [id]="'address1'"
                              [label]="fieldLabel(addressConfig, 'address1')"
                              [formGroupState]="addressFormGroupState"
           ></app-input-control>
         </div>
 
-        <div class="col-4 mb-2">
+        <div *ngIf="fieldLabel(addressConfig, 'address2')" class="col-4 mb-2">
           <app-input-control [id]="'address2'"
                              [label]="fieldLabel(addressConfig, 'address2')"
                              [formGroupState]="addressFormGroupState"
           ></app-input-control>
         </div>
 
-        <div class="col-4 mb-2">
+        <div *ngIf="fieldLabel(addressConfig, 'street')" class="col-4 mb-2">
           <app-input-control [id]="'street'"
                              [label]="fieldLabel(addressConfig, 'street')"
                              [formGroupState]="addressFormGroupState"
           ></app-input-control>
         </div>
 
-        <div class="col-4 mb-2">
+        <div *ngIf="fieldLabel(addressConfig, 'city')" class="col-4 mb-2">
           <app-input-control [id]="'city'"
                              [label]="fieldLabel(addressConfig, 'city')"
                              [formGroupState]="addressFormGroupState"
           ></app-input-control>
         </div>
 
-        <div class="col-4 mb-2">
+        <div *ngIf="fieldLabel(addressConfig, 'country')" class="col-4 mb-2">
           <app-input-control [id]="'country'"
                              [label]="fieldLabel(addressConfig, 'country')"
                              [formGroupState]="addressFormGroupState"

@@ -9,15 +9,15 @@
         <div class="col-4 mb-3">
 
           <app-group-container>
-            <div class="d-flex justify-content-between">
+            <div *ngIf="control.value.bankName" class="d-flex justify-content-between">
               <span>Beneficiary Bank :</span>
               <span>{{control.value.bankName}}</span>
             </div>
-            <div class="d-flex justify-content-between">
+            <div *ngIf="control.value.swiftCode" class="d-flex justify-content-between">
               <span>Swift Code :</span>
               <span>{{control.value.swiftCode}}</span>
             </div>
-            <div class="d-flex justify-content-between">
+            <div *ngIf="control.value.accountNumber" class="d-flex justify-content-between">
               <span>Account Number :</span>
               <span>{{control.value.accountNumber}}</span>
             </div>

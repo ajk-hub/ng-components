@@ -22,8 +22,8 @@ export class BeneficiaryInfoComponent extends FormStateComponent implements OnIn
 
     Optional.of(this.resource)
       .ifExist(r => {
-        this.toControl('name').setValue(r.name);
-        this.toControl('nationality').setValue(r.nationality);
+        Optional.of(this.toControl('name')).ifExist(c => c.setValue(r.name));
+        Optional.of(this.toControl('nationality')).ifExist(c => c.setValue(r.nationality));
       });
   }
 

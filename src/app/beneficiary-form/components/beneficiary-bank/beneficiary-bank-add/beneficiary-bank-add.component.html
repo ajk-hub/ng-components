@@ -1,7 +1,7 @@
 <ng-container *ngIf="beneficiaryBankConfig && formGroupState">
 
   <div class="modal-header">
-    <h4 class="modal-title pull-left">Add Beneficiary</h4>
+    <h4 class="modal-title pull-left">Add Beneficiary Bank</h4>
 
     <button type="button" class="close pull-right" aria-label="Close" (click)="closeOrCancel.emit()">
       <span aria-hidden="true">&times;</span>
@@ -10,21 +10,21 @@
 
   <div class="modal-body">
 
-    <div class="mb-3">
+    <div *ngIf="fieldLabel(beneficiaryBankConfig, 'bankName')" class="mb-3">
       <app-input-control [id]="'bankName'"
                          [label]="fieldLabel(beneficiaryBankConfig, 'bankName')"
                          [formGroupState]="formGroupState"
       ></app-input-control>
     </div>
 
-    <div class="mb-3">
+    <div *ngIf="fieldLabel(beneficiaryBankConfig, 'swiftCode')" class="mb-3">
       <app-input-control [id]="'swiftCode'"
                          [label]="fieldLabel(beneficiaryBankConfig, 'swiftCode')"
                          [formGroupState]="formGroupState"
       ></app-input-control>
     </div>
 
-    <div class="mb-3">
+    <div *ngIf="fieldLabel(beneficiaryBankConfig, 'accountNumber')" class="mb-3">
       <app-input-control [id]="'accountNumber'"
                          [label]="fieldLabel(beneficiaryBankConfig, 'accountNumber')"
                          [formGroupState]="formGroupState"

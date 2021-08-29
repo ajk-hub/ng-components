@@ -5,14 +5,14 @@
 
     <app-group-container>
 
-      <div class="mb-3">
+      <div *ngIf="fieldLabel(beneficiaryInfoConfig, 'name')" class="mb-3">
         <app-input-control [id]="'name'"
                            [label]="fieldLabel(beneficiaryInfoConfig, 'name')"
                            [formGroupState]="formGroupState"
         ></app-input-control>
       </div>
 
-      <div class="mb-3">
+      <div *ngIf="fieldLabel(beneficiaryInfoConfig, 'nationality')" class="mb-3">
         <app-input-control [id]="'nationality'"
                            [label]="fieldLabel(beneficiaryInfoConfig, 'nationality')"
                            [formGroupState]="formGroupState"

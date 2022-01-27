@@ -7,4 +7,4 @@
   - Dropdown
 - Form Sample
 - Amount With Currency
-- Beneficiary Form
+- Dynamic Form
